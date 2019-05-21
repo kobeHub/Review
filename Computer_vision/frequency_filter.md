@@ -1,7 +1,9 @@
 # 频域滤波
 
-[TOC]
 
+
+[TOC]
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
 ## 1. 频域
 
 信号处理是采用**不同频率的正弦波**的叠加来逼近模拟任何周期函数。信号频谱$X(f)$代表了信号在不同频率分量的成分的大小，可以提供比时域波形更直观、丰富的信息。在频域中可以很容易的去除一些特定的频率成分，即频域滤波。
