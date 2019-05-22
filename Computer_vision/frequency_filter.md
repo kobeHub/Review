@@ -3,7 +3,7 @@
 
 
 [TOC]
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+
 ## 1. 频域
 
 信号处理是采用**不同频率的正弦波**的叠加来逼近模拟任何周期函数。信号频谱$X(f)$代表了信号在不同频率分量的成分的大小，可以提供比时域波形更直观、丰富的信息。在频域中可以很容易的去除一些特定的频率成分，即频域滤波。
@@ -13,47 +13,47 @@
 ### 2.1 一维连续傅立叶变换
 
 进行从空域向频域的连续变换:
-$$
-F(u) = \int _{x = -\infty} ^{\infty} f(x)e ^{-2j \pi ux}dx
-$$
+
+![](http://latex.codecogs.com/gif.latex?F%28u%29%3D%5Cint_%7Bx%20%3D-%5Cinfty%7D%5E%7B%5Cinfty%7Df%28x%29e%5E%7B-2j%5Cpi%20ux%7Ddx)
+
 其中$j$为虚数单位，$x,u$均为实数，对应的傅立叶逆变换将图像的频率分布函数变换为灰度分布函数。
-$$
-f(x) = \int _{u = -\infty} ^{\infty} F(u) e ^{2j\pi ux} du
-$$
+
+![f(x) = \int _{u = -\infty} ^{\infty} F(u) e ^{2j\pi ux} du](http://latex.codecogs.com/gif.latex?f%28x%29%20%3D%20%5Cint%20_%7Bu%20%3D%20-%5Cinfty%7D%20%5E%7B%5Cinfty%7D%20F%28u%29%20e%20%5E%7B2j%5Cpi%20ux%7D%20du)
+
 基函数:$e ^{-2j \pi ux}$ 可以使用欧拉公式:
-$$
-e ^{j \theta} = cos \theta + j sin\theta
-$$
-![oula](//media.innohub.top/190521-oula.png)
+
+![e ^{j \theta} = cos \theta + j sin\theta](http://latex.codecogs.com/gif.latex?e%20%5E%7Bj%20%5Ctheta%7D%20%3D%20cos%20%5Ctheta%20&plus;%20j%20sin%5Ctheta%7B%5Ccolor%7BCyan%7D%20%7D)
+
+![oula](http://media.innohub.top/190521-oula.png)
 
 **注意逆变换基函数没有负号**
 
 ### 2.2 二维连续傅里叶变换
 
-![二维](//media.innohub.top/190521-fu2.png)
+![二维](http://media.innohub.top/190521-fu2.png)
 
 ### 2.3 离散傅立叶变换（DFT）
 
-![](//media.innohub.top/190521-dft.png)
+![DFT](http://media.innohub.top/190521-dft.png)
 
 二维变换:
 
-![二维DFT](//media.innohub.top/190521-dft2.png)
+![二维DFT](http://media.innohub.top/190521-dft2.png)
 
 DFT计算得到频域的分量后，可以计算对应的**傅立叶频谱**:
-$$
-|F(u, v)| = [R ^2(u, v) + I ^2 (u,v)]^2
-$$
+
+![|F(u, v)| = [R ^2(u, v) + I ^2 (u,v)]^2](http://latex.codecogs.com/gif.latex?%7CF%28u%2C%20v%29%7C%20%3D%20%5BR%20%5E2%28u%2C%20v%29%20&plus;%20I%20%5E2%20%28u%2Cv%29%5D%5E2)
+
 R,I分别为实部、虚部。
 
 **相位谱**
-$$
-\phi (u, v) = tan ^{-1} [\frac{I(u,v)}{R(u,v)}]
-$$
+
+![\phi (u, v) = tan ^{-1} [\frac{I(u,v)}{R(u,v)}]](http://latex.codecogs.com/gif.latex?%5Cphi%20%28u%2C%20v%29%20%3D%20tan%20%5E%7B-1%7D%20%5B%5Cfrac%7BI%28u%2Cv%29%7D%7BR%28u%2Cv%29%7D%5D)
+
 **功率谱**
-$$
-P(u,v) = |F(u,v)| ^2
-$$
+
+![P(u,v) = |F(u,v)| ^2](http://latex.codecogs.com/gif.latex?P%28u%2Cv%29%20%3D%20%7CF%28u%2Cv%29%7C%20%5E2)
+
 
 #### 傅立叶频谱图的移中
 
@@ -89,7 +89,7 @@ $$
 
 对于傅立叶逆变换具有同样的性质
 
-![平移](//media.innohub.top/190521-tran.png)
+![平移](http://media.innohub.top/190521-tran.png)
 
 ### 2.4 缩放
 
