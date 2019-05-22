@@ -55,7 +55,7 @@ Phong模型，基于RGB三基色颜色系统的Phong模型：
 ![$$
 I = k_aI_{pa} + \sum [k_dI_{pd}cosi + K_s I_{ps}cos^n\theta]
 $$](http://latex.codecogs.com/gif.latex?I%20%3D%20k_aI_%7Bpa%7D%20&plus;%20%5Csum%20%5Bk_dI_%7Bpd%7Dcosi%20&plus;%20K_s%20I_%7Bps%7Dcos%5En%5Ctheta%5D)
-使用三个分量（$I_{pa}, I_{pd}, I_{ps}$）表示RBG颜色空间,一旦**这三个分量以及其对应的系数（$k_a, k_d, k_s n,$）确定，** 从物体表面的某一点到达观察者的反射光的颜色就只和**光源入射角以及视角$\theta$有关** 。
+使用三个分量（![$I_{pa}, I_{pd}, I_{ps}$](http://latex.codecogs.com/gif.latex?I_%7Bpa%7D%2C%20I_%7Bpd%7D%2C%20I_%7Bps%7D)）表示RBG颜色空间,一旦**这三个分量以及其对应的系数（![$k_a, k_d, k_s n,$](http://latex.codecogs.com/gif.latex?k_a%2C%20k_d%2C%20k_s%20n)）确定，** 从物体表面的某一点到达观察者的反射光的颜色就只和**光源入射角以及视角![$\theta$](http://latex.codecogs.com/gif.latex?\theta)有关** 。
 
 这是一个纯几何模型。
 
@@ -115,7 +115,7 @@ m-邻域：像素p和q在彼此的8-邻域中，同时满足一定的相似度�
 
 也叫作距离函数或者斜切算法。描述的是图像中的像素点与某个区域的距离。距离变换给出每一个像素到区域边界的距离，**区域内部的点变换结果全为0**.如下，一个对于1区域的D4距离变换结果:
 
-![ju](/home/inno/Pictures/190512-ju.jpg)
+![ju](http://media.innohub.top/190512-ju.jpg)
 
-![](/home/inno/Pictures/190512-juli.jpg)
+![](http://media.innohub.top/190512-juli.jpg)
 
