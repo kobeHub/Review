@@ -16,25 +16,20 @@
 ### 2.1 生成图像叠加效果（Alpha Blending）
 
 + 对于两个图像的**合成**可以使用加法进行叠加操作：
-  $$ { }
-   g(x, y) = \alpha*f(x, y) + \beta*f(x, y) \\
-   \alpha + \beta = 1
-  $$
+![g(x, y) = \alpha*f(x, y) + \beta*f(x, y) \\ \alpha + \beta = 1](http://latex.codecogs.com/gif.latex?g%28x%2C%20y%29%20%3D%20%5Calpha*f%28x%2C%20y%29%20&plus;%20%5Cbeta*f%28x%2C%20y%29%20%5C%5C%20%5Calpha%20&plus;%20%5Cbeta%20%3D%201)
   也可以用于任何两张图像的衔接。
   
 + 使用乘法，可以进行特定区域的提取，可以将除了待提取区域的位置的像素全部置为0
-  $$
-  C = \alpha*F + (1-\alpha)B
-  $$
+  ![C = \alpha*F + (1-\alpha)B](http://latex.codecogs.com/gif.latex?C%20%3D%20%5Calpha*F%20&plus;%20%281-%5Calpha%29B)
   
 
 ### 2.2 获取图像的前景
 
-可以给定一个当前图像$I$,以及对应的背景图像$B$,然后计算两个图像之间的差异：
-$$
-Diff(x,y) = ||I(x, y) \; - \; B(x,y)||^2
-$$
-如果该差异值大于某一个特定值$T$，就可以视为前景图像.**在背景保持不变的环境下，对于运动目标的检测：可以使用减法操作完成，在差图像不为零的位置表明出现过运动目标。**
+可以给定一个当前图像*I*,以及对应的背景图像*B*,然后计算两个图像之间的差异：
+
+![Diff(x,y) = ||I(x, y) \; - \; B(x,y)||^2](http://latex.codecogs.com/gif.latex?Diff%28x%2Cy%29%20%3D%20%7C%7CI%28x%2C%20y%29%20%5C%3B%20-%20%5C%3B%20B%28x%2Cy%29%7C%7C%5E2)
+
+如果该差异值大于某一个特定值*T*，就可以视为前景图像.**在背景保持不变的环境下，对于运动目标的检测：可以使用减法操作完成，在差图像不为零的位置表明出现过运动目标。**
 
 ## 3.逻辑操作
 
@@ -53,13 +48,13 @@ $$
 ### 4.1 空间变换
 
 要求变换后保持图像中曲线性特征的连续性以及各物体间的连通性。
-$$
-g(x,y) = f(\hat{x}, \hat{y}) = f[a(x, y), b(a, y)]
-$$
+
+![g(x,y) = f(\hat{x}, \hat{y}) = f[a(x, y), b(a, y)]](http://latex.codecogs.com/gif.latex?g%28x%2Cy%29%20%3D%20f%28%5Chat%7Bx%7D%2C%20%5Chat%7By%7D%29%20%3D%20f%5Ba%28x%2C%20y%29%2C%20b%28a%2C%20y%29%5D)
+
 
 ### 4.2 灰度级插值
 
-再输入图像中，灰度值仅仅在整数位置（x,y）被定义，但是在上式中的$g(x, y)$的像素值一般由处于非整数位置的像素点确定。所以需要使用取样的方法，确定目标点的灰度值。
+再输入图像中，灰度值仅仅在整数位置（x,y）被定义，但是在上式中的*g(x, y)*的像素值一般由处于非整数位置的像素点确定。所以需要使用取样的方法，确定目标点的灰度值。
 
 + 最近邻： x = int(x+ 0.5), y = int(y + 0.5)
 
@@ -93,12 +88,12 @@ $$
 
 + 旋转:
 
-  绕原点逆时针旋转$\theta$角，可以使用以下公式得到变换后的位置坐标：
+  绕原点逆时针旋转![\theta](http://latex.codecogs.com/gif.latex?%5Ctheta)角，可以使用以下公式得到变换后的位置坐标：
 
-  > $$
-  > a(x, y) = xcos(\theta) - ysin(\theta) \\
-  > b(x, y) = xsin(\theta) + ycos(\theta)
-  > $$
+  > 
+  > ![a(x, y) = xcos(\theta) - ysin(\theta) \\
+  b(x, y) = xsin(\theta) + ycos(\theta)
+  ](http://latex.codecogs.com/gif.latex?a%28x%2C%20y%29%20%3D%20xcos%28%5Ctheta%29%20-%20ysin%28%5Ctheta%29%20%5C%3B%20b%28x%2C%20y%29%20%3D%20xsin%28%5Ctheta%29%20&plus;%20ycos%28%5Ctheta%29)
 
   
 
@@ -133,17 +128,17 @@ $$
 
 1. 线性变换
 
-2. 对数变换，$s = c×log(1+r)$ 其c为常数，r非负。
+2. 对数变换，*s = c×log(1+r)* 其c为常数，r非负。
 
    ![](http://media.innohub.top/190517-bm.png)
 
    
 
-3. 幂律变换，$s = c × r^\gamma$, 即Gamma纠正，其中$x, \gamma$均为正实数
+3. 幂律变换，![s = c × r^\gamma](http://latex.codecogs.com/gif.latex?s%20%3D%20c%20%D7%20r%5E%5Cgamma), 即Gamma纠正，其中![x, \gamma](http://latex.codecogs.com/gif.latex?x,\gamma)均为正实数
 
    ![不同的gamma纠正](http://media.innohub.top/190517-gam1.png)
 
-   $\gamma$大于1，压缩暗部，增强亮部（**整体亮度减低**）；小于1，压缩亮部（**整体亮度提高**），增强暗部。用以改变对比度。灰度值变换函数的基本要求：连续的增函数，保证变换后从白到黑的顺序不变。
+   ![$\gamma$](http://latex.codecogs.com/gif.latex?\gamma)大于1，压缩暗部，增强亮部（**整体亮度减低**）；小于1，压缩亮部（**整体亮度提高**），增强暗部。用以改变对比度。灰度值变换函数的基本要求：连续的增函数，保证变换后从白到黑的顺序不变。
 
    
 
@@ -172,9 +167,9 @@ $$
 + 定义域为[0, L-1]的单值单增函数
 + 映射后的范围依旧为[0, L-1]
 
-$$
+![$$
 s_k = T(r_k) = (L-1)\sum_{j=0}^{k}\frac{n_j}{n} = (L-1)\sum p(r_j)
-$$
+$$](http://latex.codecogs.com/gif.latex?s_k%20%3D%20T%28r_k%29%20%3D%20%28L-1%29%5Csum_%7Bj%3D0%7D%5E%7Bk%7D%5Cfrac%7Bn_j%7D%7Bn%7D%20%3D%20%28L-1%29%5Csum%20p%28r_j%29)
 
 
 基本步骤:
