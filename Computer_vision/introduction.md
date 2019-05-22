@@ -40,9 +40,9 @@
 #### RGB模型
 
 三原色模型需要使用三个灰度值的映射表示：
-$$
+![$$
 f_c(x, y) = (f_r(x, y), f_g(x, y), f_b(x, y))
-$$
+$$](http://latex.codecogs.com/gif.latex?f_c%28x%2C%20y%29%20%3D%20%28f_r%28x%2C%20y%29%2C%20f_g%28x%2C%20y%29%2C%20f_b%28x%2C%20y%29%29)
 
 #### 存储
 
@@ -52,9 +52,9 @@ $$
 #### 简单照明模型
 
 Phong模型，基于RGB三基色颜色系统的Phong模型：
-$$
+![$$
 I = k_aI_{pa} + \sum [k_dI_{pd}cosi + K_s I_{ps}cos^n\theta]
-$$
+$$](http://latex.codecogs.com/gif.latex?I%20%3D%20k_aI_%7Bpa%7D%20&plus;%20%5Csum%20%5Bk_dI_%7Bpd%7Dcosi%20&plus;%20K_s%20I_%7Bps%7Dcos%5En%5Ctheta%5D)
 使用三个分量（$I_{pa}, I_{pd}, I_{ps}$）表示RBG颜色空间,一旦**这三个分量以及其对应的系数（$k_a, k_d, k_s n,$）确定，** 从物体表面的某一点到达观察者的反射光的颜色就只和**光源入射角以及视角$\theta$有关** 。
 
 这是一个纯几何模型。
@@ -99,7 +99,7 @@ m-邻域：像素p和q在彼此的8-邻域中，同时满足一定的相似度�
 
 满足以下三个条件的函数可以作为距离的度量:
 
-+ 同一性： $D(p, q) > 0 \;\;当p!=q; D(p,q)=0, p == q$
++ 同一性： *D(p, q) > 0   当p!=q; D(p,q)=0, p == q*
 + 对称性
 + 三角不等式
 
