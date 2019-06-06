@@ -32,7 +32,7 @@
 
 + 低通滤波，最简单的滤波模板使用邻域均值（均值滤波），以及高斯滤波器。
 
-  ![gauss](//media.innohub.top/190519-gauss.png)
+  ![gauss](http://media.innohub.top/190519-gauss.png)
 
   
 
@@ -51,7 +51,7 @@
 
 中心区域为正，边缘区域为负，和为0
 
-![high](//media.innohub.top/190519-high.png)
+![high](http://media.innohub.top/190519-high.png)
 
 由于模板的系数和为0，所以当模板通过像素稳定的区域时，输出为0或者比较小，需要一些放缩或者裁剪，用以补偿滤波后的负灰度级。
 
@@ -60,28 +60,28 @@
 1. 一阶微分滤波
 
    在离散空间，使用差分实现，常用的差分模板:
-   $$
+   ![$$
    \begin{bmatrix}
    -1      &  & 1      \\
    -1 &  & 1 \\
    -1     &  & 1
    \end{bmatrix}
-   $$
+   $$](http://latex.codecogs.com/gif.latex?%5Cbegin%7Bbmatrix%7D%20-1%20%26%20%26%201%20%5C%5C%20-1%20%26%20%26%201%20%5C%5C%20-1%20%26%20%26%201%20%5Cend%7Bbmatrix%7D)
 
-   $$
+   ![$$
    \begin{bmatrix}
    1     & 1 & 1      \\
     \\
    -1     & -1& -1
    \end{bmatrix}
-   $$
+   $$](http://latex.codecogs.com/gif.latex?%5Cbegin%7Bbmatrix%7D%201%20%26%201%20%26%201%20%5C%5C%20%5C%5C%20-1%20%26%20-1%26%20-1%20%5Cend%7Bbmatrix%7D)
 
    
 
    他们结合构成一个梯度算子，对应差分公式
-   $$
+   ![$$
    \frac{\mathrm{d}f}{\mathrm{d}x} = f(x+1) - f(x)
-   $$
+   $$](http://latex.codecogs.com/gif.latex?%5Cfrac%7B%5Cmathrm%7Bd%7Df%7D%7B%5Cmathrm%7Bd%7Dx%7D%20%3D%20f%28x&plus;1%29%20-%20f%28x%29)
 
    + Robert
    + Prewitt
@@ -127,26 +127,26 @@
 
 ### 3.1 梯度的度量
 
-$$
+![$$
 \nabla f \approx |G_x| + |G_y|
-$$
+$$](http://latex.codecogs.com/gif.latex?%5Cnabla%20f%20%5Capprox%20%7CG_x%7C%20&plus;%20%7CG_y%7C)
 
 1. 罗伯特交叉算子
-   $$
+   ![$$
    G_x = (z_9 - z_5)\\G_y = (z_8 - z_6)
-   $$
+   $$](http://latex.codecogs.com/gif.latex?G_x%20%3D%20%28z_9%20-%20z_5%29%5C%5CG_y%20%3D%20%28z_8%20-%20z_6%29)
    由于实际计算是使用的是绝对值，所以Roberts算子也可以使用另一种形式的算子，结果一样。实质是交叉的求对角线方向的元素的灰度值的差，实际上计算所得的灰度值是交叉点处的值，所以图像整体偏移了半个像素。
 
 2. 蒲瑞维特算子
-   $$
+   ![$$
    G_x = (z_3 + z_6+z_9) - (z_1+z_4+z_7) \\ G_y = (z_7+z_8+z_9) - (z_1+z_2+z_3)
-   $$
+   $$](http://latex.codecogs.com/gif.latex?G_x%20%3D%20%28z_3%20&plus;%20z_6&plus;z_9%29%20-%20%28z_1&plus;z_4&plus;z_7%29%20%5C%5C%20G_y%20%3D%20%28z_7&plus;z_8&plus;z_9%29%20-%20%28z_1&plus;z_2&plus;z_3%29)
    蒲瑞维特算子利用像素点上下、左右邻点的灰度差，在边缘处达到极值检测边缘。**对于噪声具有平滑作用，检测精度不够高。**
 
 3. 索贝尔算子
-   $$
+   ![$$
    G_x = (z_3+2z_6+z_9) - (z_1+2z_4+z_7) \\ G_y = (z_7+2z_8+z_9) - (z_1+2z_2 +z_3)
-   $$
+   $$](http://latex.codecogs.com/gif.latex?G_x%20%3D%20%28z_3&plus;2z_6&plus;z_9%29%20-%20%28z_1&plus;2z_4&plus;z_7%29%20%5C%5C%20G_y%20%3D%20%28z_7&plus;2z_8&plus;z_9%29%20-%20%28z_1&plus;2z_2%20&plus;z_3%29)
    索贝尔算子利用邻域点的灰度值加权的方法，**根据边缘点处达到极值这一现象进行检测。索贝尔算子对于噪声具有平滑作用，提供较为精确地边缘方向信息，但同时会检测出许多伪边缘，定位精度不高。**
 
    一种改进的Sobel边缘检测方法：
@@ -155,17 +155,17 @@ $$
 
    45、135,180,225,270,315,可以更加有效地检测各个方向的边缘
 
-   ![sobel](//media.innohub.top/190521-sobel.png)
+   ![sobel](http://media.innohub.top/190521-sobel.png)
 
    ### 3.2二阶微分的应用
 
    1. 拉普拉斯算子
 
    利用二阶导数过零点可以确定边缘位置，二阶微分也可以用于边缘检测。对于连续函数的拉普拉斯值定义为:
-   $$
+   ![$$
    \nabla ^2 f = \frac{\mathrm{d} ^2 f}{\mathrm{d} ^2 x ^2} + \frac{\mathrm{d} ^2 f}{\mathrm{d} ^2 y ^2} 
-   $$
-   ![laplas](//media.innohub.top/190521-las.png)
+   $$](http://latex.codecogs.com/gif.latex?%5Cnabla%20%5E2%20f%20%3D%20%5Cfrac%7B%5Cmathrm%7Bd%7D%20%5E2%20f%7D%7B%5Cmathrm%7Bd%7D%20%5E2%20x%20%5E2%7D%20&plus;%20%5Cfrac%7B%5Cmathrm%7Bd%7D%20%5E2%20f%7D%7B%5Cmathrm%7Bd%7D%20%5E2%20y%20%5E2%7D)
+   ![laplas](http://media.innohub.top/190521-las.png)
 
    对应的模板有以下要求:
 
@@ -175,11 +175,11 @@ $$
 
    同时，为了完成边缘增强的任务，只需要在进行Laplacian算子滤波操作后，在加上原图。就可以得到边缘锐化。
 
-   ![拉普拉斯的输出](//media.innohub.top/190521-lapa.png)
+   ![拉普拉斯的输出](http://media.innohub.top/190521-lapa.png)
 
    拉普拉斯滤波，边缘检测可以用于**图像锐化**，原始图像与经过拉普拉斯滤波得到的图像叠加可以实现边缘锐化。
 
-   ![拉普拉斯模板](//media.innohub.top/190521-lapa1.png)
+   ![拉普拉斯模板](http://media.innohub.top/190521-lapa1.png)
 
    
 
